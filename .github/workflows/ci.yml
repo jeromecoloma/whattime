@@ -17,10 +17,15 @@ jobs:
 
       - name: Install dependencies
         env:
+          XCODEGEN_VERSION: "2.45.3"
           SWIFTFORMAT_VERSION: "0.60.1"
           SWIFTLINT_VERSION: "0.63.2"
         run: |
-          brew install xcodegen
+          # XcodeGen — pinned binary from GitHub releases
+          curl -fsSL "https://github.com/yonaskolb/XcodeGen/releases/download/${XCODEGEN_VERSION}/xcodegen.zip" \
+            -o /tmp/xcodegen.zip
+          unzip -q /tmp/xcodegen.zip -d /tmp/xcodegen
+          sudo mv /tmp/xcodegen/xcodegen /usr/local/bin/xcodegen
 
           # SwiftFormat — pinned binary from GitHub releases
           curl -fsSL "https://github.com/nicklockwood/SwiftFormat/releases/download/${SWIFTFORMAT_VERSION}/swiftformat_macos.zip" \
