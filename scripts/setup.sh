@@ -20,6 +20,11 @@ brew install "${DEPS[@]}" 2>/dev/null \
   || brew upgrade "${DEPS[@]}" 2>/dev/null \
   || true
 
+# ── Git hooks ─────────────────────────────────────────────────────────────────
+echo ""
+echo "==> Installing git hooks..."
+"$ROOT_DIR/scripts/install-hooks.sh"
+
 # ── Generate .xcodeproj ───────────────────────────────────────────────────────
 echo ""
 echo "==> Generating WhatTime.xcodeproj (XcodeGen)..."

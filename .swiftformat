@@ -41,7 +41,6 @@
 --elseposition same-line
 --guardelse same-line
 --emptybraces no-space
---spaceinsideangles false
 
 # Patterns
 --patternlet hoist
@@ -81,7 +80,7 @@
 --enable redundantType
 --enable redundantVoidReturnType
 --enable semicolons
---enable sortedImports
+--enable sortImports
 --enable spaceAroundBraces
 --enable spaceAroundBrackets
 --enable spaceAroundComments

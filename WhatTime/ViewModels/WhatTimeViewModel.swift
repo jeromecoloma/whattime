@@ -3,10 +3,9 @@ import SwiftUI
 
 @MainActor
 final class WhatTimeViewModel: ObservableObject {
-
     // MARK: - State
 
-    @Published var queryText: String = ""
+    @Published var queryText = ""
     @Published private(set) var results: [TimeConversionResult] = []
     @Published private(set) var parseError: String? = nil
 

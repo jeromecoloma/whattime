@@ -4,11 +4,10 @@ struct ParsedQuery {
     let hour: Int
     let minute: Int
     let sourceZone: TimeZone
-    let destinationZone: TimeZone?  // nil = show all presets
+    let destinationZone: TimeZone? // nil = show all presets
 }
 
 enum NaturalLanguageParser {
-
     // MARK: - Public
 
     static func parse(_ input: String) -> ParsedQuery? {
@@ -52,8 +51,7 @@ enum NaturalLanguageParser {
         guard
             let (hour, minute) = extractTime(from: match, in: nsText, hourGroup: 1, minuteGroup: 2, ampmGroup: 3),
             let sourceZone = extractZone(from: match, in: nsText, group: 4),
-            let destZone = extractZone(from: match, in: nsText, group: 5)
-        else {
+            let destZone = extractZone(from: match, in: nsText, group: 5) else {
             return nil
         }
 
@@ -71,8 +69,7 @@ enum NaturalLanguageParser {
 
         guard
             let (hour, minute) = extractTime(from: match, in: nsText, hourGroup: 1, minuteGroup: 2, ampmGroup: 3),
-            let sourceZone = extractZone(from: match, in: nsText, group: 4)
-        else {
+            let sourceZone = extractZone(from: match, in: nsText, group: 4) else {
             return nil
         }
 
@@ -91,8 +88,7 @@ enum NaturalLanguageParser {
         guard
             let (hour, minute) = extractTime(from: match, in: nsText, hourGroup: 1, minuteGroup: 2, ampmGroup: 3),
             let sourceZone = extractZone(from: match, in: nsText, group: 4),
-            let destZone = extractZone(from: match, in: nsText, group: 5)
-        else {
+            let destZone = extractZone(from: match, in: nsText, group: 5) else {
             return nil
         }
 
@@ -110,8 +106,7 @@ enum NaturalLanguageParser {
 
         guard
             let (hour, minute) = extractTime(from: match, in: nsText, hourGroup: 1, minuteGroup: 2, ampmGroup: 3),
-            let sourceZone = extractZone(from: match, in: nsText, group: 4)
-        else {
+            let sourceZone = extractZone(from: match, in: nsText, group: 4) else {
             return nil
         }
 
@@ -144,10 +139,12 @@ enum NaturalLanguageParser {
         let rawMinute: Int
         if digits.count == 4 {
             guard let h = Int(digits.prefix(2)), let m = Int(digits.suffix(2)) else { return nil }
-            rawHour = h; rawMinute = m
+            rawHour = h
+            rawMinute = m
         } else {
             guard let h = Int(digits.prefix(1)), let m = Int(digits.suffix(2)) else { return nil }
-            rawHour = h; rawMinute = m
+            rawHour = h
+            rawMinute = m
         }
 
         let ampmRange = match.range(at: 2)
@@ -159,7 +156,7 @@ enum NaturalLanguageParser {
             else if ampm.hasPrefix("a") && hour == 12 { hour = 0 }
         }
 
-        guard (0...23).contains(hour), (0...59).contains(rawMinute) else { return nil }
+        guard (0 ... 23).contains(hour), (0 ... 59).contains(rawMinute) else { return nil }
         return ParsedQuery(hour: hour, minute: rawMinute, sourceZone: .current, destinationZone: nil)
     }
 
@@ -218,7 +215,7 @@ enum NaturalLanguageParser {
         }
         // No am/pm: hour is used as-is (24h). 1–12 = am, 13–23 = pm.
 
-        guard (0...23).contains(hour), (0...59).contains(rawMinute) else { return nil }
+        guard (0 ... 23).contains(hour), (0 ... 59).contains(rawMinute) else { return nil }
         return (hour, rawMinute)
     }
 

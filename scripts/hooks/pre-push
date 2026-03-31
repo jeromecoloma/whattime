@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+set -e
+
+echo "Running pre-push checks..."
+
+echo "  → lint"
+make lint
+
+echo "  → format-check"
+make format-check
+
+echo "Pre-push checks passed."

@@ -1,7 +1,6 @@
 import Foundation
 
 enum TimeConversionService {
-
     // MARK: - Public
 
     static func convert(query: ParsedQuery, presets: [TimeZoneEntry]) -> [TimeConversionResult] {

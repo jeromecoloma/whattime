@@ -8,7 +8,7 @@ enum TimeZoneData {
         TimeZoneEntry(id: "Pacific/Guam", name: "Guam", flag: "🇬🇺"),
     ]
 
-    // Maps common city/country names (lowercased) → IANA timezone identifier
+    /// Maps common city/country names (lowercased) → IANA timezone identifier
     static let nameMap: [String: String] = [
         // Preset zones
         "palau": "Pacific/Palau",

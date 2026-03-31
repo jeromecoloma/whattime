@@ -16,7 +16,23 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: brew install xcodegen swiftlint swiftformat
+        env:
+          SWIFTFORMAT_VERSION: "0.60.1"
+          SWIFTLINT_VERSION: "0.63.2"
+        run: |
+          brew install xcodegen
+
+          # SwiftFormat — pinned binary from GitHub releases
+          curl -fsSL "https://github.com/nicklockwood/SwiftFormat/releases/download/${SWIFTFORMAT_VERSION}/swiftformat_macos.zip" \
+            -o /tmp/swiftformat.zip
+          unzip -q /tmp/swiftformat.zip -d /tmp/swiftformat
+          sudo mv /tmp/swiftformat/swiftformat /usr/local/bin/swiftformat
+
+          # SwiftLint — pinned binary from GitHub releases
+          curl -fsSL "https://github.com/realm/SwiftLint/releases/download/${SWIFTLINT_VERSION}/swiftlint_macos.zip" \
+            -o /tmp/swiftlint.zip
+          unzip -q /tmp/swiftlint.zip -d /tmp/swiftlint
+          sudo mv /tmp/swiftlint/swiftlint /usr/local/bin/swiftlint
 
       - name: Generate Xcode project
         run: make xcodeproj

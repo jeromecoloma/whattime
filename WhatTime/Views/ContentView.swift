@@ -72,10 +72,10 @@ struct ContentView: View {
             systemImage: "clock",
             description: Text(
                 "Type a time query and press Return.\n" +
-                "Examples:\n" +
-                "  • \"8pm palau time\"\n" +
-                "  • \"9am guam time to manila time\"\n" +
-                "  • \"what is 8:30pm palau time to guam time\""
+                    "Examples:\n" +
+                    "  • \"8pm palau time\"\n" +
+                    "  • \"9am guam time to manila time\"\n" +
+                    "  • \"what is 8:30pm palau time to guam time\""
             )
         )
     }

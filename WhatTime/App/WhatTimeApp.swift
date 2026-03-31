@@ -12,7 +12,7 @@ struct WhatTimeApp: App {
         .defaultSize(width: 800, height: 560)
         .windowResizability(.contentMinSize)
         .commands {
-            CommandGroup(replacing: .newItem) { }
+            CommandGroup(replacing: .newItem) {}
         }
     }
 }
