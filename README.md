@@ -4,6 +4,8 @@
 
 Just type a time — with as much or as little detail as you want — and instantly see it converted across your preset world locations. No dropdowns, no clicking through calendars.
 
+**Status:** Active — v0.1.0. Contributions welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## Requirements
 
 - macOS 14 (Sonoma)+
@@ -12,8 +14,8 @@ Just type a time — with as much or as little detail as you want — and instan
 ## Getting Started
 
 ```bash
-git clone <your-repo-url>
-cd WhatTime
+git clone https://github.com/jeromecoloma/whattime
+cd whattime
 ./scripts/setup.sh   # installs deps, generates .xcodeproj, builds — no Xcode UI needed
 ```
 
@@ -143,6 +145,11 @@ make archive      # Release archive
 make clean        # Remove build artifacts
 ```
 
+## Getting Help
+
+- [Open an issue](https://github.com/jeromecoloma/whattime/issues) for bugs or feature requests
+- Read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting a PR
+
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE)
