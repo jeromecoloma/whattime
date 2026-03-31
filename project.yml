@@ -1,0 +1,70 @@
+# XcodeGen project spec — run `xcodegen generate --spec project.yml --project WhatTime` to produce WhatTime.xcodeproj
+# https://github.com/yonaskolb/XcodeGen
+
+name: WhatTime
+
+options:
+  bundleIdPrefix: com.jeromecoloma
+  deploymentTarget:
+    macOS: "14.0"
+  xcodeVersion: "15.0"
+  generateEmptyDirectories: true
+  defaultConfig: Debug
+
+settings:
+  SWIFT_VERSION: "5.9"
+  MACOSX_DEPLOYMENT_TARGET: "14.0"
+  ENABLE_HARDENED_RUNTIME: YES
+  DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+  ONLY_ACTIVE_ARCH[config=Debug]: YES
+
+configs:
+  Debug: debug
+  Release: release
+
+targets:
+  WhatTime:
+    type: application
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: WhatTime
+        excludes:
+          - "**/.DS_Store"
+          - "App/Info.plist"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.jeromecoloma.WhatTime
+        PRODUCT_NAME: WhatTime
+        INFOPLIST_FILE: App/Info.plist
+        CFBundleIconFile: AppIcon.icns
+        CODE_SIGN_ENTITLEMENTS: App/WhatTime.entitlements
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        ENABLE_HARDENED_RUNTIME: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+      configs:
+        Debug:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          DEBUG_INFORMATION_FORMAT: dwarf
+        Release:
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
+          VALIDATE_PRODUCT: YES
+
+  WhatTimeTests:
+    type: bundle.unit-test
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: WhatTimeTests
+        excludes:
+          - "**/.DS_Store"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.jeromecoloma.WhatTime.tests
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/WhatTime.app/Contents/MacOS/WhatTime"
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: WhatTime

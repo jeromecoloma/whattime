@@ -1,0 +1,84 @@
+# SwiftLint configuration — WhatTime
+# macOS 14+, Swift 5.9+, Xcode 15+
+
+included:
+  - WhatTime
+  - WhatTimeTests
+
+excluded:
+  - WhatTime/WhatTime.xcodeproj
+  - dist
+  - .build
+
+opt_in_rules:
+  - array_init
+  - closure_end_indentation
+  - closure_spacing
+  - collection_alignment
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - empty_collection_literal
+  - empty_count
+  - empty_string
+  - explicit_init
+  - extension_access_modifier
+  - fatal_error_message
+  - first_where
+  - identical_operands
+  - joined_default_parameter
+  - last_where
+  - let_var_whitespace
+  - modifier_order
+  - operator_usage_whitespace
+  - overridden_super_call
+  - prefer_self_type_over_type_of_self
+  - prefer_zero_over_explicit_init
+  - prohibited_super_call
+  - reduce_into
+  - redundant_nil_coalescing
+  - redundant_type_annotation
+  - shorthand_optional_binding
+  - sorted_first_last
+  - sorted_imports
+  - toggle_bool
+  - unowned_variable_capture
+  - untyped_error_in_catch
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
+  - yoda_condition
+
+disabled_rules:
+  - trailing_whitespace   # delegated to SwiftFormat
+  - todo                  # active development
+  - force_cast            # AppKit interop
+  - force_try             # test setup
+
+line_length:
+  warning: 140
+  error: 200
+  ignores_urls: true
+  ignores_comments: true
+
+file_length:
+  warning: 500
+  error: 800
+
+type_body_length:
+  warning: 300
+  error: 500
+
+function_body_length:
+  warning: 60
+  error: 100
+
+identifier_name:
+  min_length:
+    warning: 2
+    error: 1
+  excluded: [id, x, y]
+
+trailing_comma:
+  mandatory_comma: true
+
+reporter: xcode
