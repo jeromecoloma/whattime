@@ -25,7 +25,7 @@ jobs:
           curl -fsSL "https://github.com/yonaskolb/XcodeGen/releases/download/${XCODEGEN_VERSION}/xcodegen.zip" \
             -o /tmp/xcodegen.zip
           unzip -q /tmp/xcodegen.zip -d /tmp/xcodegen
-          sudo mv /tmp/xcodegen/xcodegen /usr/local/bin/xcodegen
+          sudo mv /tmp/xcodegen/xcodegen/bin/xcodegen /usr/local/bin/xcodegen
 
           # SwiftFormat — pinned binary from GitHub releases
           curl -fsSL "https://github.com/nicklockwood/SwiftFormat/releases/download/${SWIFTFORMAT_VERSION}/swiftformat.zip" \
