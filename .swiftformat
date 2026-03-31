@@ -41,7 +41,6 @@
 --elseposition same-line
 --guardelse same-line
 --emptybraces no-space
---spaceinsidebrackets false
 --spaceinsideangles false
 
 # Patterns
